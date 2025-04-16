@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cahier des Charges - Projet de Formation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3f37c9;
+            --secondary-color: #560bad;
+            --accent-color: #f72585;
+            --success-color: #4cc9f0;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --dark-text: #212529;
+            --medium-text: #495057;
+            --light-text: #f8f9fa;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--light-text);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.4rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.6rem;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .form-section:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .section-icon {
+            position: absolute;
+            top: -15px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--medium-text);
+            transition: var(--transition);
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            transition: var(--transition);
+        }
+        
+        .input-group:focus-within label {
+            color: var(--primary-color);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--dark-text);
+            background-color: #fff;
+            transition: var(--transition);
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group, .radio-group {
+            margin-bottom: 25px;
+        }
+        
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label, .radio-item label {
+            font-weight: 400;
+            margin-bottom: 0;
+            padding-left: 15px;
+            cursor: pointer;
+        }
+        
+        .custom-checkbox, .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .custom-checkbox {
+            border-radius: 4px;
+        }
+        
+        .custom-radio {
+            border-radius: 50%;
+        }
+        
+        .checkbox-item input[type="checkbox"], 
+        .radio-item input[type="radio"] {
+            display: none;
+        }
+        
+        .checkbox-item input[type="checkbox"]:checked + .custom-checkbox {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox-item input[type="checkbox"]:checked + .custom-checkbox::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 0;
+            left: 4px;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .radio-item input[type="radio"]:checked + .custom-radio {
+            border-color: var(--primary-color);
+        }
+        
+        .radio-item input[type="radio"]:checked + .custom-radio::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .submit-button {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .required {
+            color: var(--accent-color);
+            margin-left: 4px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 0;
+        }
+        
+        .form-row > div {
+            flex: 1;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: var(--medium-text);
+            margin-top: 5px;
+            transition: var(--transition);
+        }
+        
+        .input-group:focus-within .help-text {
+            color: var(--primary-color);
+        }
+        
+        .progress-container {
+            margin-bottom: 50px;
+        }
+        
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 100%;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 20%; /* Will be updated with JS */
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            z-index: 2;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-step {
+            position: relative;
+            z-index: 3;
+            background-color: var(--card-bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 3px solid var(--border-color);
+            transition: var(--transition);
+            color: var(--medium-text);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-step.active {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            color: white;
+            border-color: var(--primary-light);
+            transform: scale(1.1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .progress-step.completed {
+            background: linear-gradient(135deg, var(--success-color), var(--primary-light));
+            color: white;
+            border-color: var(--success-color);
+        }
+        
+        .progress-step.completed::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+        
+        .progress-step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            font-weight: 500;
+            color: var(--medium-text);
+            transition: var(--transition);
+        }
+        
+        .progress-step.active .progress-step-label {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        /* Animation d'entrée pour les sections */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-section {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Tooltips pour les champs */
+        .tooltip-icon {
+            margin-left: 8px;
+            color: var(--medium-text);
+            cursor: help;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .tooltip-icon:hover {
+            color: var(--primary-color);
+        }
+        
+        .tooltip-text {
+            position: absolute;
+            right: 0;
+            top: -10px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            width: 250px;
+            z-index: 10;
+            box-shadow: var(--shadow);
+        }
+        
+        .tooltip-icon:hover + .tooltip-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tooltip-text::before {
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 100%;
+            border-width: 8px;
+            border-style: solid;
+            border-color: var(--primary-dark) transparent transparent transparent;
+        }
+        
+        /* Styles pour l'upload de fichiers */
+        .file-upload-container {
+            margin-bottom: 40px;
+        }
+        
+        .file-upload-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .upload-zone {
+            position: relative;
+            width: 100%;
+            min-height: 180px;
+            border: 2px dashed var(--primary-light);
+            border-radius: 12px;
+            background-color: rgba(67, 97, 238, 0.03);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .upload-zone:hover, .upload-zone.drag-over {
+            background-color: rgba(67, 97, 238, 0.08);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dropzone-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .dropzone-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .dropzone-icon {
+            font-size: 3rem;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        .upload-zone:hover .dropzone-icon {
+            transform: translateY(-5px);
+            color: var(--primary-color);
+        }
+        
+        .dropzone-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .dropzone-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .dropzone-subtitle {
+            font-size: 0.9rem;
+            color: var(--medium-text);
+        }
+        
+        .dropzone-button {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .upload-zone:hover .dropzone-button {
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
+        }
+        
+        .upload-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(67, 97, 238, 0.05);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .upload-stats {
+            display: flex;
+            gap: 15px;
+        }
+        
+        #fileCounter, #fileSize {
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        #fileCounter::before {
+            content: '\f15b';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        
+        #fileSize::before {
+            content: '\f0a0';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        
+        .upload-clear-button {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .upload-clear-button:hover {
+            background-color: rgba(247, 37, 133, 0.1);
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        
+        .upload-preview {
+            margin-top: 15px;
+        }
+        
+        .preview-title {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-title::before {
+            content: '\f15c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .file-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary-color));
+        }
+        
+        .file-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-light);
+        }
+        
+        .file-icon {
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(67, 97, 238, 0.2));
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .file-details {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .file-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark-text);
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .file-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--medium-text);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .file-status {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background-color: var(--primary-light);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .upload-progress {
+            height: 4px;
+            background-color: #eee;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .upload-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-light), var(--primary-color));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        
+        .file-action-button {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            color: var(--medium-text);
+            font-size: 0.85rem;
+        }
+        
+        .file-remove {
+            color: var(--accent-color);
+            border-color: rgba(247, 37, 133, 0.2);
+        }
+        
+        .file-view {
+            color: var(--primary-color);
+            border-color: rgba(67, 97, 238, 0.2);
+        }
+        
+        .file-action-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .file-remove:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .file-view:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* Responsive adjustments for file upload */
+        @media (max-width: 768px) {
+            .file-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .upload-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .dropzone-title {
+                font-size: 1rem;
+            }
+            
+            .upload-zone {
+                min-height: 150px;
+            }
+        }
+        
+        /* Animation pour les fichiers */
+        @keyframes fileAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .file-item {
+            animation: fileAppear 0.3s ease-out forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-section {
+                padding: 25px 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .progress-step {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .progress-step-label {
+                font-size: 0.75rem;
+            }
+            
+            button {
+                width: 100%;
+                padding: 12px 20px;
+            }
+            
+            .section-icon {
+                display: none;
+            }
+        }
+        
+        /* Floating labels (optional enhancement) */
+        .float-label {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .float-label input, 
+        .float-label select,
+        .float-label textarea {
+            height: 56px;
+            padding: 20px 15px 10px;
+        }
+        
+        .float-label textarea {
+            height: auto;
+            min-height: 120px;
+        }
+        
+        .float-label label {
+            position: absolute;
+            left: 15px;
+            top: 18px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background-color: transparent;
+            z-index: 1;
+            color: var(--medium-text);
+        }
+        
+        .float-label input:focus ~ label,
+        .float-label input:not(:placeholder-shown) ~ label,
+        .float-label select:focus ~ label,
+        .float-label select:not([value=""]):valid ~ label,
+        .float-label textarea:focus ~ label,
+        .float-label textarea:not(:placeholder-shown) ~ label {
+            top: 8px;
+            font-size: 0.75rem;
+            color: var(--primary-color);
+        }
+        
+        /* Fancy select styling */
+        .select-wrapper {
+            position: relative;
+        }
+        
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 17px;
+            color: var(--medium-text);
+            pointer-events: none;
+        }
+        
+        /* Success feedback */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+            box-shadow: var(--shadow);
+        }
+        
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .success-message h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .success-message h2::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cahier des Charges - Projet de Formation</h1>
+            <p>Merci de remplir ce formulaire pour nous permettre de créer une formation adaptée à vos besoins.</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-step active">
+                    <span class="progress-step-label">Informations</span>
+                </div>
+                <div class="progress-step">
+                    <span class="progress-step-label">Public cible</span>
+                </div>
+                <div class="progress-step">
+                    <span class="progress-step-label">Objectifs</span>
+                </div>
+                <div class="progress-step">
+                    <span class="progress-step-label">Contenu</span>
+                </div>
+                <div class="progress-step">
+                    <span class="progress-step-label">Modalités</span>
+                </div>
+            </div>
+        </div>
+        
+        <form id="cahierCharges" action="https://ilyas1ou.app.n8n.cloud/webhook-test/7a29edec-ba2f-4696-8a56-92e467c68115" method="POST">
+            <!-- Section 1: Informations générales -->
+            <div class="form-section">
+                <div class="section-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h2>Informations générales</h2>
+                
+                <div class="form-row">
+                    <div class="float-label">
+                        <input type="text" id="nomProjet" name="nomProjet" placeholder=" " required>
+                        <label for="nomProjet">Nom du projet de formation <span class="required">*</span></label>
+                    </div>
+                    
+                    <div class="select-wrapper">
+                        <select id="secteurActivite" name="secteurActivite" required>
+                            <option value="" disabled selected>Sélectionnez le secteur</option>
+                            <option value="sante">Santé</option>
+                            <option value="industrie">Industrie</option>
+                            <option value="commerce">Commerce</option>
+                            <option value="informatique">Informatique & Digital</option>
+                            <option value="banque">Banque & Finance</option>
+                            <option value="education">Éducation</option>
+                            <option value="construction">Construction & BTP</option>
+                            <option value="transport">Transport & Logistique</option>
+                            <option value="autre">Autre (préciser)</option>
+                        </select>
+                        <label for="secteurActivite">Secteur d'activité <span class="required">*</span></label>
+                    </div>
+                </div>
+                
+                <div id="autreSecteurDiv" style="display: none;">
+                    <div class="float-label">
+                        <input type="text" id="autreSecteur" name="autreSecteur" placeholder=" ">
+                        <label for="autreSecteur">Précisez le secteur d'activité</label>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="float-label">
+                        <input type="text" id="nomEntreprise" name="nomEntreprise" placeholder=" " required>
+                        <label for="nomEntreprise">Nom de l'entreprise <span class="required">*</span></label>
+                    </div>
+                    
+                    <div class="float-label">
+                        <input type="text" id="contactResponsable" name="contactResponsable" placeholder=" " required>
+                        <label for="contactResponsable">Personne à contacter <span class="required">*</span></label>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="float-label">
+                        <input type="email" id="emailContact" name="emailContact" placeholder=" " required>
+                        <label for="emailContact">Email <span class="required">*</span></label>
+                    </div>
+                    
+                    <div class="float-label">
+                        <input type="tel" id="telContact" name="telContact" placeholder=" ">
+                        <label for="telContact">Téléphone</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 2: Public cible -->
+            <div class="form-section">
+                <div class="section-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>Public cible</h2>
+                
+                <div class="input-group">
+                    <label for="nbApprenants">Nombre d'apprenants estimé <span class="required">*</span></label>
+                    <input type="number" id="nbApprenants" name="nbApprenants" min="1" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="profilApprenants">
+                        Profil des apprenants <span class="required">*</span>
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Décrivez le profil type de vos apprenants pour nous permettre d'adapter parfaitement la formation</span>
+                    </label>
+                    <textarea id="profilApprenants" name="profilApprenants" placeholder="Décrivez le profil des apprenants (âge, niveau d'études, expérience professionnelle, etc.)" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Niveau de connaissances préalables dans le domaine <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="niveauDebutant" name="niveauPrealable" value="debutant" required>
+                            <span class="custom-radio"></span>
+                            <label for="niveauDebutant">Débutant</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="niveauIntermediaire" name="niveauPrealable" value="intermediaire">
+                            <span class="custom-radio"></span>
+                            <label for="niveauIntermediaire">Intermédiaire</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="niveauAvance" name="niveauPrealable" value="avance">
+                            <span class="custom-radio"></span>
+                            <label for="niveauAvance">Avancé</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="niveauMixte" name="niveauPrealable" value="mixte">
+                            <span class="custom-radio"></span>
+                            <label for="niveauMixte">Mixte (préciser)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="precisionNiveauDiv" style="display: none;">
+                    <div class="input-group">
+                        <label for="precisionNiveau">Précisez les différents niveaux</label>
+                        <textarea id="precisionNiveau" name="precisionNiveau"></textarea>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Contraintes particulières</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contrainteHandicap" name="contraintes" value="handicap">
+                            <span class="custom-checkbox"></span>
+                            <label for="contrainteHandicap">Apprenants en situation de handicap</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contrainteLangue" name="contraintes" value="langue">
+                            <span class="custom-checkbox"></span>
+                            <label for="contrainteLangue">Barrière linguistique</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contrainteInformatique" name="contraintes" value="informatique">
+                            <span class="custom-checkbox"></span>
+                            <label for="contrainteInformatique">Faible maîtrise des outils informatiques</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contrainteTemps" name="contraintes" value="temps">
+                            <span class="custom-checkbox"></span>
+                            <label for="contrainteTemps">Disponibilité limitée</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contrainteAutre" name="contraintes" value="autre">
+                            <span class="custom-checkbox"></span>
+                            <label for="contrainteAutre">Autre (préciser)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="autreContrainteDiv" style="display: none;">
+                    <div class="input-group">
+                        <label for="autreContrainte">Précisez les autres contraintes</label>
+                        <textarea id="autreContrainte" name="autreContrainte"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 3: Objectifs de la formation -->
+            <div class="form-section">
+                <div class="section-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h2>Objectifs de la formation</h2>
+                
+                <div class="input-group">
+                    <label for="objectifGeneral">
+                        Objectif général de la formation <span class="required">*</span>
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Définissez ce que les apprenants seront capables de faire après la formation</span>
+                    </label>
+                    <textarea id="objectifGeneral" name="objectifGeneral" placeholder="Que doivent être capables de faire les apprenants à l'issue de la formation?" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="objectifsSpecifiques">Objectifs spécifiques <span class="required">*</span></label>
+                    <textarea id="objectifsSpecifiques" name="objectifsSpecifiques" placeholder="Listez les compétences précises à acquérir (ex: - Maîtriser la technique X&#10;- Être capable de réaliser Y&#10;- Comprendre le concept Z)" required></textarea>
+                    <p class="help-text">Utilisez un tiret (-) au début de chaque objectif pour les lister</p>
+                </div>
+                
+                <div class="input-group">
+                    <label for="resultatsAttendus">Résultats attendus et indicateurs de réussite <span class="required">*</span></label>
+                    <textarea id="resultatsAttendus" name="resultatsAttendus" placeholder="Comment mesurerez-vous l'efficacité de la formation?" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="certification">Certification ou qualification visée</label>
+                    <input type="text" id="certification" name="certification" placeholder="Si applicable">
+                </div>
+            </div>
+            
+            <!-- Section 4: Contenu de la formation -->
+            <div class="form-section">
+                <div class="section-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Contenu de la formation</h2>
+                
+                <div class="input-group">
+                    <label for="themesFormation">
+                        Thèmes et modules à aborder <span class="required">*</span>
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Listez les thèmes principaux que vous souhaitez voir traités dans la formation</span>
+                    </label>
+                    <textarea id="themesFormation" name="themesFormation" placeholder="Listez les principaux thèmes que vous souhaitez voir traités" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="connaissancesObligatoires">Connaissances et concepts obligatoires <span class="required">*</span></label>
+                    <textarea id="connaissancesObligatoires" name="connaissancesObligatoires" placeholder="Quels concepts doivent absolument être maîtrisés?" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="documentsExistants">
+                        Documents ou ressources existants
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Mentionnez tout support existant qui pourrait être utile pour créer la formation</span>
+                    </label>
+                    <textarea id="documentsExistants" name="documentsExistants" placeholder="Avez-vous déjà des supports, des procédures ou documents de référence?"></textarea>
+                </div>
+                
+                <div class="input-group file-upload-container">
+                    <label>
+                        Joindre des documents
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Vous pouvez télécharger des documents pertinents pour la formation (PDF, Word, PowerPoint, etc.)</span>
+                    </label>
+                    <div class="file-upload-wrapper">
+                        <div class="upload-zone">
+                            <input type="file" id="fileUpload" name="documentsUploaded" multiple class="dropzone-input">
+                            <label for="fileUpload" class="dropzone-label">
+                                <div class="dropzone-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="dropzone-text">
+                                    <span class="dropzone-title">Glissez et déposez vos fichiers ici</span>
+                                    <span class="dropzone-subtitle">ou</span>
+                                    <span class="dropzone-button">Parcourir les fichiers</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="upload-info">
+                            <div class="upload-stats">
+                                <span id="fileCounter">0 fichier sélectionné</span>
+                                <span id="fileSize">0 KB</span>
+                            </div>
+                            <div class="upload-actions">
+                                <button type="button" id="clearUploads" class="upload-clear-button">
+                                    <i class="fas fa-trash-alt"></i> Effacer tout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upload-preview">
+                        <h3 class="preview-title">Fichiers à télécharger</h3>
+                        <ul id="fileList" class="file-list"></ul>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="referencesSpecifiques">Références spécifiques à inclure</label>
+                    <textarea id="referencesSpecifiques" name="referencesSpecifiques" placeholder="Y a-t-il des auteurs, livres, articles ou normes à mentionner dans la formation?"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="terminologieSpecifique">Terminologie ou vocabulaire spécifique</label>
+                    <textarea id="terminologieSpecifique" name="terminologieSpecifique" placeholder="Y a-t-il un vocabulaire technique propre à votre secteur à utiliser?"></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 5: Modalités pédagogiques -->
+            <div class="form-section">
+                <div class="section-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h2>Modalités pédagogiques</h2>
+                
+                <div class="input-group">
+                    <label>Format de formation souhaité <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="formatPresentiel" name="formatFormation" value="presentiel" required>
+                            <span class="custom-radio"></span>
+                            <label for="formatPresentiel">Présentiel</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="formatDistanciel" name="formatFormation" value="distanciel">
+                            <span class="custom-radio"></span>
+                            <label for="formatDistanciel">Distanciel (e-learning)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="formatMixte" name="formatFormation" value="mixte">
+                            <span class="custom-radio"></span>
+                            <label for="formatMixte">Mixte (blended learning)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="dureeFormation">Durée totale souhaitée (heures) <span class="required">*</span></label>
+                        <input type="number" id="dureeFormation" name="dureeFormation" min="1" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="repartitionSeances">Répartition des séances</label>
+                        <input type="text" id="repartitionSeances" name="repartitionSeances" placeholder="Ex: 3 séances de 2h, 1 journée complète, etc.">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>
+                        Approches pédagogiques privilégiées
+                        <i class="fas fa-question-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Sélectionnez les méthodes d'apprentissage que vous préférez</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheCours" name="approches" value="cours">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheCours">Cours théoriques</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheDemonstration" name="approches" value="demonstation">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheDemonstration">Démonstrations</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheExercices" name="approches" value="exercices">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheExercices">Exercices pratiques</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheEtudeCas" name="approches" value="etudeCas">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheEtudeCas">Études de cas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheMiseEnSituation" name="approches" value="miseEnSituation">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheMiseEnSituation">Mises en situation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheJeuxRole" name="approches" value="jeuxRole">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheJeuxRole">Jeux de rôle</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheQuizz" name="approches" value="quizz">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheQuizz">Quiz et évaluations</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheVideo" name="approches" value="video">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheVideo">Vidéos</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="approcheAutre" name="approches" value="autre">
+                            <span class="custom-checkbox"></span>
+                            <label for="approcheAutre">Autres (préciser)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="autreApprocheDiv" style="display: none;">
+                    <div class="input-group">
+                        <label for="autreApproche">Précisez les autres approches</label>
+                        <textarea id="autreApproche" name="autreApproche"></textarea>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Modalités d'évaluation souhaitées</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationQCM" name="evaluations" value="qcm">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationQCM">QCM</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationExercice" name="evaluations" value="exercice">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationExercice">Exercices pratiques</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationProjet" name="evaluations" value="projet">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationProjet">Projet final</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationExamen" name="evaluations" value="examen">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationExamen">Examen écrit</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationOral" name="evaluations" value="oral">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationOral">Présentation orale</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluationAutre" name="evaluations" value="autre">
+                            <span class="custom-checkbox"></span>
+                            <label for="evaluationAutre">Autre (préciser)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="autreEvaluationDiv" style="display: none;">
+                    <div class="input-group">
+                        <label for="autreEvaluation">Précisez l'autre modalité d'évaluation</label>
+                        <textarea id="autreEvaluation" name="autreEvaluation"></textarea>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="contraintesCalendrier">Contraintes de calendrier</label>
+                    <textarea id="contraintesCalendrier" name="contraintesCalendrier" placeholder="Y a-t-il des périodes à privilégier ou à éviter?"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="dateDebutSouhaitee">Date de début souhaitée</label>
+                    <input type="date" id="dateDebutSouhaitee" name="dateDebutSouhaitee">
+                </div>
+                
+                <div class="input-group">
+                    <label for="informationsSupplementaires">Informations supplémentaires</label>
+                    <textarea id="informationsSupplementaires" name="informationsSupplementaires" placeholder="Tout autre élément important pour la conception de la formation"></textarea>
+                </div>
+            </div>
+            
+            <div class="submit-button">
+                <button type="submit"><i class="fas fa-paper-plane"></i> Soumettre le cahier des charges</button>
+            </div>
+        </form>
+        
+        <!-- Message de succès (affiché après soumission) -->
+        <div class="success-message" id="successMessage" style="display: none;">
+            <i class="fas fa-check-circle"></i>
+            <h2>Merci pour votre soumission !</h2>
+            <p>Votre cahier des charges a été envoyé avec succès. Un membre de notre équipe vous contactera prochainement pour discuter de votre projet de formation.</p>
+            <p>Un email de confirmation a été envoyé à l'adresse que vous avez indiquée.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fonctions pour l'animation de la barre de progression
+        function updateProgressBar(currentStep) {
+            const progressSteps = document.querySelectorAll('.progress-step');
+            
+            // Reset all steps
+            progressSteps.forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index < currentStep - 1) {
+                    step.classList.add('completed');
+                } else if (index === currentStep - 1) {
+                    step.classList.add('active');
+                }
+            });
+            
+            // Update progress bar
+            const progressBar = document.querySelector('.progress-bar');
+            const progressPercentage = ((currentStep - 1) / (progressSteps.length - 1)) * 100;
+            progressBar.style.setProperty('--progress', `${progressPercentage}%`);
+            document.querySelector('.progress-bar').style.setProperty('--progress', `${progressPercentage}%`);
+        }
+        
+        // Navigation entre les sections
+        const formSections = document.querySelectorAll('.form-section');
+        
+        function showSection(sectionIndex) {
+            formSections.forEach((section, index) => {
+                section.style.display = index === sectionIndex ? 'block' : 'none';
+            });
+            updateProgressBar(sectionIndex + 1);
+        }
+        
+        // Afficher/masquer les champs supplémentaires selon les sélections
+        document.getElementById('secteurActivite').addEventListener('change', function() {
+            document.getElementById('autreSecteurDiv').style.display = 
+                this.value === 'autre' ? 'block' : 'none';
+        });
+        
+        const radiosNiveau = document.querySelectorAll('input[name="niveauPrealable"]');
+        radiosNiveau.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('precisionNiveauDiv').style.display = 
+                    this.value === 'mixte' ? 'block' : 'none';
+            });
+        });
+        
+        document.getElementById('contrainteAutre').addEventListener('change', function() {
+            document.getElementById('autreContrainteDiv').style.display = 
+                this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('approcheAutre').addEventListener('change', function() {
+            document.getElementById('autreApprocheDiv').style.display = 
+                this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('evaluationAutre').addEventListener('change', function() {
+            document.getElementById('autreEvaluationDiv').style.display = 
+                this.checked ? 'block' : 'none';
+        });
+        
+        // Validation des champs obligatoires
+        function validateSection(sectionIndex) {
+            const section = formSections[sectionIndex];
+            const requiredFields = section.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                    // Ajouter un message d'erreur
+                    const errorMsg = document.createElement('p');
+                    errorMsg.className = 'error-message';
+                    errorMsg.textContent = 'Ce champ est obligatoire';
+                    
+                    // Vérifier si un message d'erreur existe déjà
+                    const existingError = field.parentNode.querySelector('.error-message');
+                    if (!existingError) {
+                        field.parentNode.appendChild(errorMsg);
+                    }
+                } else {
+                    field.classList.remove('error');
+                    const existingError = field.parentNode.querySelector('.error-message');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Animation de transition entre les sections
+        function animateTransition(fromSection, toSection) {
+            fromSection.style.animation = 'fadeOut 0.3s forwards';
+            setTimeout(() => {
+                fromSection.style.display = 'none';
+                toSection.style.display = 'block';
+                toSection.style.animation = 'fadeIn 0.3s forwards';
+            }, 300);
+        }
+        
+        // Initialisation du formulaire et gestion de la soumission
+        document.addEventListener('DOMContentLoaded', function() {
+            // Effets visuels pour les champs de formulaire
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentNode.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentNode.classList.remove('focused');
+                });
+            });
+            
+            // Gérer la soumission du formulaire
+            document.getElementById('cahierCharges').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Valider tous les champs
+                let isValid = true;
+                for (let i = 0; i < formSections.length; i++) {
+                    if (!validateSection(i)) {
+                        isValid = false;
+                        showSection(i);
+                        break;
+                    }
+                }
+                
+                if (isValid) {
+                    // Récupérer toutes les données du formulaire
+                    const formData = new FormData(this);
+                    const formJSON = {};
+                    
+                    formData.forEach((value, key) => {
+                        // Gérer les cases à cocher (qui peuvent avoir plusieurs valeurs)
+                        if (formJSON[key]) {
+                            if (!Array.isArray(formJSON[key])) {
+                                formJSON[key] = [formJSON[key]];
+                            }
+                            formJSON[key].push(value);
+                        } else {
+                            formJSON[key] = value;
+                        }
+                    });
+                    
+                    // Afficher un indicateur de chargement
+                    const submitButton = document.querySelector('.submit-button button');
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                    submitButton.disabled = true;
+                    
+                    // Vérifier si des fichiers sont présents dans le formulaire
+                    const fileInput = document.getElementById('fileUpload');
+                    const hasFiles = fileInput && fileInput.files && fileInput.files.length > 0;
+                    
+                    if (hasFiles) {
+                        // Si des fichiers sont présents, utiliser FormData directement
+                        fetch('https://ilyas1ou.app.n8n.cloud/webhook-test/7a29edec-ba2f-4696-8a56-92e467c68115', {
+                            method: 'POST',
+                            body: formData // Envoi direct du FormData
+                        })
+                        .then(response => {
+                            // Restaurer le bouton
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                            
+                            if (response.ok) {
+                                // Afficher le message de succès
+                                document.getElementById('cahierCharges').style.display = 'none';
+                                document.getElementById('successMessage').style.display = 'block';
+                                document.querySelector('.progress-container').style.display = 'none';
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                console.error('Erreur de serveur:', response.status);
+                                alert('Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer plus tard.');
+                            }
+                        })
+                        .catch(error => {
+                            // Restaurer le bouton en cas d'erreur
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                            
+                            console.error('Erreur de réseau:', error);
+                            alert('Une erreur de connexion s\'est produite. Veuillez vérifier votre connexion internet et réessayer.');
+                        });
+                    } else {
+                        // Sans fichiers, envoyer en JSON
+                        fetch('https://ilyas1ou.app.n8n.cloud/webhook-test/7a29edec-ba2f-4696-8a56-92e467c68115', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formJSON)
+                        })
+                        .then(response => {
+                            // Restaurer le bouton
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                            
+                            if (response.ok) {
+                                // Afficher le message de succès
+                                document.getElementById('cahierCharges').style.display = 'none';
+                                document.getElementById('successMessage').style.display = 'block';
+                                document.querySelector('.progress-container').style.display = 'none';
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                console.error('Erreur de serveur:', response.status);
+                                alert('Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer plus tard.');
+                            }
+                        })
+                        .catch(error => {
+                            // Restaurer le bouton en cas d'erreur
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                            
+                            console.error('Erreur de réseau:', error);
+                            alert('Une erreur de connexion s\'est produite. Veuillez vérifier votre connexion internet et réessayer.');
+                        });
+                    }
+                }
+            });
+            
+            // Initialisation
+            updateProgressBar(1);
+        });
+        
+        // Fonction pour les animations au scroll
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.form-section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('animate');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
